@@ -35,28 +35,18 @@ namespace Unit05.Game.Scripting
         /// </summary>
         /// <param name="cast">The cast to update.</param>
         /// <param name="stage">The stage to update.</param>
-        public override void Execute(Cast cast, Stage stage)
+        public void Execute(Cast cast, Script stage)
         {
-            // 4) Add the following local variables:
-            //    - actors: a list of actors
-            //    - actor: an actor
-
             List<Actor> actors;
             Actor actor;
 
-            // 5) Get the list of actors from the cast. Use the following code:
-            //    actors = cast.GetActors();
-
-            actors = cast.GetActors();
-
-            // 6) Use a foreach loop to iterate through the actors. Use the following code:
-            //    foreach (actor in actors)
-            //    {
-
+            actors = cast.GetActors("cycle");
+            
             foreach (Actor a in actors)
             {
+                a.MoveNext();
                 actor = a;
-                actor.Move();
+                actor.MoveNext();
             }
         }
     }
